@@ -1,0 +1,13 @@
+-- Simple cypher queries
+
+-- all nodes
+START artifact=node(*) RETURN artifact
+
+-- all nodes with artifactId 'spring-tx'
+START artifact=node(*) WHERE artifact.artifactId =~ /spring-tx/ RETURN artifact
+
+-- all nodes that spring-data dependsOn
+START artifact=node(*) MATCH artifact-[:dependsOn]-> dependency WHERE artifact.artifactId =~ /spring-data/ RETURN dependency
+
+-- all nodes that require 'spring-tx'
+START artifact=node(*) MATCH artifact-[:dependsOn]-> dependency WHERE dependency.artifactId =~ /spring-tx/ RETURN artifact
