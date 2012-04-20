@@ -4,3 +4,9 @@
 *.jar
 *.war
 *.ear
+
+/spring-neo4j-example/.settings
+/spring-neo4j-example/target
+/spring-neo4j-example/.classpath
+/spring-neo4j-example/.project
+/spring-neo4j-example/.springBeans
