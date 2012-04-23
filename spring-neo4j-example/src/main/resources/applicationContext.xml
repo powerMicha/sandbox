@@ -13,7 +13,27 @@
 	<context:annotation-config />
 
 	<neo4j:repositories base-package="de.flitzr.spring.neo4j.example.dao" />
-	<neo4j:config storeDirectory="target/neo4j.db"/>	
-	
-	<tx:annotation-driven/>
+	<neo4j:config storeDirectory="target/neo4j.db"/>
+
+    <!-- configure @Transactional support for neo4j 1.6 -->
+    <!--
+    <tx:annotation-driven mode="aspectj"/>
+    -->
+
+    <!-- configure @Transactional support for neo4j 1.7 -->
+    <bean name="springTransactionManager" class="org.neo4j.kernel.impl.transaction.SpringTransactionManager">
+        <constructor-arg ref="graphDatabaseService"/>
+    </bean>
+
+    <bean name="userTransaction" class="org.neo4j.kernel.impl.transaction.UserTransactionImpl">
+        <constructor-arg ref="springTransactionManager"/>
+    </bean>
+
+    <bean id="neo4jTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+        <property name="transactionManager" ref="springTransactionManager" />
+        <property name="userTransaction" ref="userTransaction" />
+    </bean>
+
+    <tx:annotation-driven mode="aspectj" transaction-manager="neo4jTransactionManager"/>
+
 </beans>

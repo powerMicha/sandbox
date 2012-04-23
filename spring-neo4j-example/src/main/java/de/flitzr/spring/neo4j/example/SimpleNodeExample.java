@@ -3,20 +3,14 @@
  */
 package de.flitzr.spring.neo4j.example;
 
-import java.io.File;
-import java.util.Iterator;
-
 import org.neo4j.cypher.ExecutionEngine;
 import org.neo4j.cypher.ExecutionResult;
-import org.neo4j.graphdb.DynamicRelationshipType;
-import org.neo4j.graphdb.GraphDatabaseService;
-import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.Relationship;
-import org.neo4j.graphdb.RelationshipType;
-import org.neo4j.graphdb.Transaction;
+import org.neo4j.graphdb.*;
 import org.neo4j.kernel.EmbeddedGraphDatabase;
-
 import scala.Console;
+
+import java.io.File;
+import java.util.Iterator;
 
 /**
  * Create nodes in Neo4j (without spring-data)

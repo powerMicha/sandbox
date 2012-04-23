@@ -1,25 +1,31 @@
 package de.flitzr.spring.neo4j.example.model;
 
-import java.util.Set;
-
 import org.neo4j.graphdb.Direction;
 import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.neo4j.annotation.NodeEntity;
-import org.springframework.data.neo4j.annotation.RelatedTo;
+import org.springframework.data.neo4j.annotation.*;
+
+import java.util.Set;
 
 @NodeEntity
 public class Artifact {
 
+    @GraphId
+    private Long id;
+
+    @Indexed
 	private String artifactId;
-	
+
 	private String groupId;
-	
+
 	private String version;
 
-	@RelatedTo(direction = Direction.OUTGOING)
+	@RelatedTo(direction = Direction.OUTGOING, type = "dependsOn", elementClass = Artifact.class)
 	private Set<Artifact> dependencies;
-	
-	@PersistenceConstructor
+
+    public Artifact(){
+        super();
+    }
+
 	public Artifact(String groupId, String artifactId, String version) {
 		super();
 		this.artifactId = artifactId;
@@ -27,7 +33,15 @@ public class Artifact {
 		this.version = version;
 	}
 
-	public String getArtifactId() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getArtifactId() {
 		return artifactId;
 	}
 
