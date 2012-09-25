@@ -10,3 +10,6 @@
 /spring-neo4j-example/.classpath
 /spring-neo4j-example/.project
 /spring-neo4j-example/.springBeans
+/example-admin-ui-plugin/.idea
+/jira-watcher-plugin/.idea
+/spring-neo4j-example/.idea

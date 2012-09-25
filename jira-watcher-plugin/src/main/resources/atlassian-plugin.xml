@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+  <plugin-info>
+    <description>${project.description}</description>
+    <version>${project.version}</version>
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+  </plugin-info>
+  <resource type="i18n" name="i18n" location="com.oraise.ojjp.jira-watcher-plugin"/>
+  <web-section name="watcherWebSection" i18n-name-key="watcher-web-section.name" key="watcher-web-section" location="watcher-sites-link" weight="1000">
+    <description key="watcher-web-section.description">The watcherWebSection Plugin</description>
+  </web-section>
+  <web-item name="Watcher Sites" i18n-name-key="watcher-sites.name" key="watcher-sites" section="system.top.navigation.bar" weight="1000">
+    <description key="watcher-sites.description">The Watcher Sites Plugin</description>
+    <label key="watcher-sites.label"/>
+    <link linkId="watcher-sites-link"/>
+  </web-item>
+  <web-item name="Stackoverflow" i18n-name-key="stackoverflow.name" key="stackoverflow" section="watcher-sites-link/watcher-web-section" weight="1000">
+    <description key="stackoverflow.description">The Stackoverflow Plugin</description>
+    <label key="stackoverflow.label"/>
+    <link linkId="stackoverflow-link">http://www.stackoverflow.com</link>
+  </web-item>
+  <component key="change-watcher-listener-impl" class="com.oraise.ojjp.components.ChangeWatcherListenerImpl" name="Change Watcher Listener Impl" i18n-name-key="change-watcher-listener-impl.name">
+    <description key="change-watcher-listener-impl.description">The Change Watcher Listener Impl Plugin</description>
+    <interface>com.oraise.ojjp.components.ChangeWatcherListener</interface>
+  </component>
+
+  <!-- replace the DefaultWatcherManager by our implementation -->
+  <component key="customWatcherManager" class="com.oraise.ojjp.components.CustomWatcherManager"  name="Custom Watcher Manaager">
+        <interface>com.atlassian.jira.issue.watchers.WatcherManager</interface>
+  </component>
+
+</atlassian-plugin>
