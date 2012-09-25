@@ -13,3 +13,8 @@
 /example-admin-ui-plugin/.idea
 /jira-watcher-plugin/.idea
 /spring-neo4j-example/.idea
+/android-example/.idea
+/android-example/bin
+/android-example/gen
+/android-example/libs
+/android-example/out
