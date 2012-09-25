@@ -8,4 +8,4 @@ Currently I've got 3 major issues:
  2. android development
  3. atlassian (jira) plugin development.
  
-You will find further details later on [my homepage](flitzr.de)
+You will find further details later on [my homepage](http://www.flitzr.de)
