@@ -1,2 +1,2 @@
 language: java
-cd spring-neo4j-example
+script: cd spring-neo4j-example && mvn test
