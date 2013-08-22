@@ -1,2 +1,2 @@
 language: java
-script: cd spring-neo4j-example && mvn install
+before_script: cd spring-neo4j-example
